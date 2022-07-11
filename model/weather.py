@@ -66,9 +66,9 @@ class Weather:
         return str(condition["text"])
 
 
-    def getConditionsIcon(self):
+    def getConditionIcon(self):
         pass
-
+      
 
     def getPrecipitationMM(self):
         return self.getCurrentData("precip_mm")+" mm"
@@ -78,12 +78,16 @@ class Weather:
         return self.getCurrentData("humidity")+"%"
 
 
-    def getWindSpeedKPH(self):
-        return self.getCurrentData("wind_kph")+" km/h"
+    # def getWindSpeedKPH(self):
+    #     return self.getCurrentData("wind_kph")+" km/h"
 
 
-    def getWindDirection(self):
-        return self.getCurrentData("wind_dir")
+    # def getWindDirection(self):
+    #     return self.getCurrentData("wind_dir")
+
+
+    def getWind(self):
+        return self.getCurrentData("wind_kph")+" km/h" + "  " +  self.getCurrentData("wind_dir")
 
 
     def getPressure(self):
