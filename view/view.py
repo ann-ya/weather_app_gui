@@ -1,6 +1,6 @@
 import tkinter
 from tkinter.constants import *
-from tkinter import StringVar, IntVar
+from tkinter import PhotoImage, StringVar, IntVar
 from tkinter.ttk import *
 from tkinter import font
 
@@ -9,7 +9,7 @@ class View(tkinter.Tk):
 
     def __init__(self, controller):
         super().__init__()
-        self.geometry("500x500")
+        self.geometry("600x550")
 
         self.controller = controller
         self.bind("<Return>", self.controller.handleButtonSearch)
@@ -18,15 +18,11 @@ class View(tkinter.Tk):
         self.varSearch = StringVar()
         self.varLocation = StringVar()
         self.varLocalTime = StringVar()
-        self.varTimeZone = StringVar()
         self.varTemp = StringVar()
         self.varFeelsLike = StringVar()
         self.varConditionText = StringVar()
-        # self.varConditionIcon = StringVar()
         self.varPrecipitation = StringVar()
         self.varHumidity = StringVar()
-        # self.varWindSpeed = StringVar()
-        # self.varWindDirection = StringVar()
         self.varWind = StringVar()
         self.varPressure = StringVar()
         self.varUnits = IntVar()
@@ -35,14 +31,14 @@ class View(tkinter.Tk):
         self.varLocation.set("Seoul")
 
         #---- Frames ----
-        self.mainframe = Frame(self)
+        self.mainframe = Frame(self, width= 600, height=600)
         self.mainframe.pack()
         self._createFrameSearchBar()
         self._createFrameInfo()
         self._createFrameDetails()
         self._createFrameControls()
 
-
+        
     def _createFrameSearchBar(self):
         self.frameSearchBar = Frame(self.mainframe)
 
@@ -58,31 +54,31 @@ class View(tkinter.Tk):
 
     def _createFrameInfo(self):
         self.frameInfo = Frame(self.mainframe)
+    
+        loc_font = font.Font(family="Velveteen", size=21)
+        temp_font = font.Font(family="Velveteen", size=22)
+        time_font = font.Font(family="Velveteen", size=20)
 
-        info_font = font.Font(family="Velveteen", size=17)
-
-        labelLocation = Label(self.frameInfo, textvariable=self.varLocation, font=info_font)
-        labelTemp =Label(self.frameInfo, textvariable=self.varTemp, font=info_font)
-        # labelIcon = Label(self.frameInfo, textvariable=self.varConditionIcon)
-
-        labelLocation.pack(pady=10)
-        labelTemp.pack(pady=5)
-        # labelIcon.pack(pady=5)
-        self.frameInfo.pack()
+        labelLocation = Label(self.frameInfo, textvariable=self.varLocation, font=loc_font, width=25, anchor=CENTER)
+        labelTemp = Label(self.frameInfo, textvariable=self.varTemp, font=temp_font, width=25, anchor=CENTER)
+        labelLocalTime = Label(self.frameInfo, textvariable=self.varLocalTime, font=time_font, width=25, anchor=CENTER)
+        
+    
+        labelLocation.pack(pady=8)
+        labelTemp.pack(pady=5, side=RIGHT)
+        labelLocalTime.pack(pady=5, side=LEFT)
+        self.frameInfo.pack(pady=20)
 
 
     def _createFrameDetails(self):
         self.frameDetails = Frame(self.mainframe)
 
-        # self.frameDetails.columnconfigure(2, weight=3)
-        d_font = font.Font(family="Velveteen", size=14)
+        d_font = font.Font(family="Velveteen", size=15)
 
         labelFeelsLikeLeft = Label(self.frameDetails, text="Feels like", font=d_font, width=20)
         labelConditionsLeft = Label(self.frameDetails, text="Conditions", font=d_font, width=20)
         labelHumidityLeft = Label(self.frameDetails, text="Humidity", font=d_font, width=20)
         labelPrecipitationLeft = Label(self.frameDetails, text="Precipitation", font=d_font, width=20)
-        # labelWindSpeedLeft = Label(self.frameDetails, text= "Wind speed")
-        # labelWindDirectionLeft =Label(self.frameDetails, text="Wind direction")
         labelWindLeft = Label(self.frameDetails, text="Wind", font=d_font, width=20)
         labelPressureLeft = Label(self.frameDetails, text="Pressure", font=d_font, width=20)
 
@@ -90,8 +86,6 @@ class View(tkinter.Tk):
         labelConditionsRight = Label(self.frameDetails, textvariable=self.varConditionText, font=d_font)
         labelHumidityRight = Label(self.frameDetails, textvariable=self.varHumidity, font=d_font)
         labelPrecipitationRight = Label(self.frameDetails, textvariable=self.varPrecipitation, font=d_font)
-        # labelWindSpeedRight = Label(self.frameDetails, textvariable=self.varWindSpeed)
-        # labelWindDirectionRight = Label(self.frameDetails, textvariable=self.varWindDirection)
         labelWindRight = Label(self.frameDetails, textvariable=self.varWind, font=d_font)
         labelPressureRight = Label(self.frameDetails, textvariable=self.varPressure, font=d_font)
 
@@ -103,15 +97,11 @@ class View(tkinter.Tk):
         labelHumidityRight.grid(row=2,column=1, pady=8,sticky=W)
         labelPrecipitationLeft.grid(row=3, column=0, pady=8, sticky=W)
         labelPrecipitationRight.grid(row=3,column=1, pady=8,sticky=W)
-        # labelWindSpeedLeft.grid(row=4, column=0, pady=8, sticky=W)
-        # labelWindSpeedRight.grid(row=4,column=1, pady=8, sticky=E)
-        # labelWindDirectionLeft.grid(row=5, column=0, pady=8, sticky=W)
-        # labelWindDirectionRight.grid(row=5,column=1, pady=8, sticky=E)
         labelWindLeft.grid(row=4, column=0, pady=8, sticky=W)
         labelWindRight.grid(row=4,column=1, pady=8,sticky=W)
         labelPressureLeft.grid(row=5, column=0, pady=8, sticky=W)
         labelPressureRight.grid(row=5, column=1, pady=8,sticky=W)
-        self.frameDetails.pack(pady=15)
+        self.frameDetails.pack(pady=20)
 
 
     def _createFrameControls(self):

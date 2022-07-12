@@ -30,10 +30,6 @@ class Weather:
         return self.getLocationData("localtime")
 
 
-    def getTimeZone(self):
-        return self.getLocationData("tz_id")
-
-
     def getLocation(self):
         return f"{self.getCity()}, {self.getCountry()}"
 
@@ -76,14 +72,6 @@ class Weather:
 
     def getHumidity(self):
         return self.getCurrentData("humidity")+"%"
-
-
-    # def getWindSpeedKPH(self):
-    #     return self.getCurrentData("wind_kph")+" km/h"
-
-
-    # def getWindDirection(self):
-    #     return self.getCurrentData("wind_dir")
 
 
     def getWind(self):

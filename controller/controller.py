@@ -19,13 +19,9 @@ class Controller:
         if "error" not in self.weather.weatherData:
             self.view.varLocation.set(self.weather.getLocation())
             self.view.varLocalTime.set(self.weather.getLocalTime())
-            self.view.varTimeZone.set(self.weather.getTimeZone())
             self.view.varConditionText.set(self.weather.getConditionText())
-            # self.view.varConditionIcon.set(self.weather.getConditionIcon())
             self.view.varPrecipitation.set(self.weather.getPrecipitationMM())
             self.view.varHumidity.set(self.weather.getHumidity())
-            # self.view.varWindSpeed.set(self.weather.getWindSpeedKPH())
-            # self.view.varWindDirection.set(self.weather.getWindDirection())
             self.view.varWind.set(self.weather.getWind())
             self.view.varPressure.set(self.weather.getPressure())
 
