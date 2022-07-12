@@ -44,10 +44,13 @@ class View(tkinter.Tk):
 
         helv13 = font.Font(family="Velveteen", size=13)
 
-        comboSearch = Combobox(self.frameSearchBar, textvariable=self.varSearch, font=helv13)
+        entry = Entry(self.frameSearchBar, textvariable=self.varSearch, font=helv13)
+        entry.place(relwidth=0.65, relheight=1)
+        # comboSearch = Combobox(self.frameSearchBar, textvariable=self.varSearch, font=helv13)
         buttonSearch = Button(self.frameSearchBar, text="Search", command=self.controller.handleButtonSearch)
 
-        comboSearch.pack(padx=10, pady=20, side=LEFT)
+        entry.pack(padx=10, pady=20, side=LEFT)
+        # comboSearch.pack(padx=10, pady=20, side=LEFT)
         buttonSearch.pack(side=RIGHT)
         self.frameSearchBar.pack()
 
