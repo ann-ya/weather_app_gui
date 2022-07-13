@@ -1,7 +1,7 @@
 import requests
 
 
-API_KEY = "aea7b1cdeec34d358df131021220807"
+API_KEY = ""
 
 
 class Weather:
